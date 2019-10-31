@@ -27,8 +27,16 @@ var shoppingList = new Vue ({
                 label: 'Lux Soap 150g 12',
                 purchased: false,
                 highPriority: true,
-            }
+            },
         ]
+    },
+    computed: {
+        characterCount() {
+            return this.newItem.length;
+        },
+        reversedItems() {
+            return this.items.slice(0).reverse();
+        }
     },
     methods: {
         // saveItem: function() {
@@ -37,7 +45,7 @@ var shoppingList = new Vue ({
         // },
         saveItem: function() {
             this.items.push({
-                label: 'this.newItem',
+                label: this.newItem,
                 purchased: false,
             },);
             this.newItem = '';
@@ -48,6 +56,12 @@ var shoppingList = new Vue ({
         },
         togglePurchased: function (item) {
             item.purchased = !item.purchased;
-        }
+        },
+
+        removeItem: function (index) {
+            let reversedItems =  this.items.slice(0).reverse();
+            reversedItems.splice(index, 1);
+            this.items = reversedItems.slice(0).reverse(); 
+        },
     }
 });

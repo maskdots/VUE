@@ -21,11 +21,17 @@
                     </div>
                     <div v-if="state === 'edit'" class="input-group flex-nowrap add-item-form">
                         <input type="text" class="form-control" v-model="newItem" placeholder="Add New Item" @keyup.enter="saveItem">
+                        <p>{{characterCount}}/200</p>
+                        
                         <button class="btn btn-primary" @click="saveItem" :disabled ="newItem.length === 0">Save Items</button>
                     </div>
                     <div class="items-wrapper mt-3">
                         <ul>
-                            <li class="priority" v-for="item in items" :class="{strikeout: item.purchased}" @click="togglePurchased(item)"> {{ item.label }} </li>
+                            <li class="priority" v-for="(item, index) in reversedItems" :class="{strikeout: item.purchased == true}" @click="togglePurchased(item)"> {{ item.label }} 
+                                <span>
+                                    <button class="btn btn-error" @click="removeItem(index)">Remove</button>
+                                </span>
+                            </li>
                         </ul>
                         <p v-if="items.length ===0">
                             Nice Job! You have bought all your iems.
