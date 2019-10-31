@@ -1,4 +1,7 @@
+.priority {
+    color: red;
+}
 .strikeout {
     text-decoration: underline;
-    color: aquamarine;
+    color: #28a745;
 }

@@ -16,14 +16,17 @@ var shoppingList = new Vue ({
             {
                 label: 'Cooking Oil 5Ltr',
                 purchased: true,
+                highPriority: false,
             },
             {
                 label: 'Shamppo Family Pack',
                 purchased: false,
+                highPriority: false,
             },
             {
                 label: 'Lux Soap 150g 12',
                 purchased: false,
+                highPriority: true,
             }
         ]
     },
