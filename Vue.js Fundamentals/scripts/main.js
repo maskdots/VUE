@@ -14,7 +14,13 @@ var shoppingList = new Vue ({
         items: [
             'Cooking Oil 5Ltr',
             'Shamppo Family Pack',
-            'Lux Soap 150g 12'
+            'Lux Soap 150g 12',
         ]
+    },
+    methods: {
+        saveItem: function() {
+            this.items.push(this.newItem);
+            this.newItem='';
+        }
     }
 });
