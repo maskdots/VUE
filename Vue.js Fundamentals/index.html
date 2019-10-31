@@ -13,8 +13,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="shopping-list">
-                    <h1> {{ header.toLocaleUpperCase() }}</h1>
-                    <div class="input-group flex-nowrap add-item-form">
+                    <div class="header">
+                        <h1> {{ header.toLocaleUpperCase() }}</h1>
+                        <button v-if="state === 'default'" class="btn btn-success" @click="changeState('edit')">Add Item</button>
+                        <button v-else class="btn btn-danger" @click="changeState('default')">Cancel</button>
+                    </div>
+                    <div v-if="state === 'edit'" class="input-group flex-nowrap add-item-form">
                         <input type="text" class="form-control" v-model="newItem" placeholder="Add New Item" @keyup.enter="saveItem">
                         <button class="btn btn-primary" @click="saveItem">Save Items</button>
                     </div>
@@ -22,6 +26,9 @@
                         <ul>
                             <li v-for="item in items"> {{ item }} </li>
                         </ul>
+                        <p v-if="items.length ===0">
+                            Nice Job! You have bought all your iems.
+                        </p>
                     </div>
                 </div>                
             </div>
