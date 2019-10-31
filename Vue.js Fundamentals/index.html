@@ -25,7 +25,7 @@
                     </div>
                     <div class="items-wrapper mt-3">
                         <ul>
-                            <li class="priority" v-for="item in items" :class="[item.purchased ? 'strikeout': '']"> {{ item.label }} </li>
+                            <li class="priority" v-for="item in items" :class="{strikeout: item.purchased}" @click="togglePurchased(item)"> {{ item.label }} </li>
                         </ul>
                         <p v-if="items.length ===0">
                             Nice Job! You have bought all your iems.
